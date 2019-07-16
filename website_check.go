@@ -35,7 +35,7 @@ func CheckUrl(u string) {
     URLScan(&urlinfo)
     urlinfo.ScanInfoResult.Response = -2
     for urlinfo.ScanInfoResult.Response == -2 {
-      time.Sleep(20 * time.Second)
+      time.Sleep(25 * time.Second)
       URLReport(&urlinfo)
     }
     if urlinfo.ScanInfoResult.Response == 1 {
