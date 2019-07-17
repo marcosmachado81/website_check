@@ -10,10 +10,15 @@ website_check is a golang application for a simple check if a website has threat
 
 ## Usage
 
-The Virtus Total API Key would be put on website_vt.go
+The Virus Total API Key would be put in config.json file with virus total urls
 
-```golang
-const APIKEY      = "<your API KEY>"
+```json
+{
+	"apikey":	"your apikey",
+	"url_scan":	"https://www.virustotal.com/vtapi/v2/url/scan",
+	"url_report":	"https://www.virustotal.com/vtapi/v2/url/report"
+}
+
 ```
 After just compile
 ```bash

@@ -22,6 +22,11 @@ type ScanRequest struct {
   UrlAddress  string  `json:"url"`
 }
 
+type Config struct {
+  Apikey    string `json:"apikey"`
+  UrlScan   string `json:"url_scan"`
+  UrlReport string `json:"url_report"`
+}
 
 type UrlInfo struct {
   Address         string

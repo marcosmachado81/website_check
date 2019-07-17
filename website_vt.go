@@ -8,17 +8,17 @@ import (
   "strings"
 )
 
-const APIKEY      = ""
+/*const APIKEY      = 
 const url_scan    = "https://www.virustotal.com/vtapi/v2/url/scan"
-const url_report  = "https://www.virustotal.com/vtapi/v2/url/report"
+const url_report  = "https://www.virustotal.com/vtapi/v2/url/report"*/
 
-func URLScan(urlinfo *UrlInfo) {
+func URLScan(urlinfo *UrlInfo, config Config) {
   hc := http.Client{}
 
   form := url.Values{}
-  form.Add("apikey", APIKEY)
+  form.Add("apikey", config.Apikey)
   form.Add("url", urlinfo.Address)
-  req, err := http.NewRequest("POST", url_scan, strings.NewReader(form.Encode()))
+  req, err := http.NewRequest("POST", config.UrlScan, strings.NewReader(form.Encode()))
   //req.PostForm = form
 
   req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
@@ -38,12 +38,12 @@ func URLScan(urlinfo *UrlInfo) {
   }
 }
 
-func URLReport(urlinfo *UrlInfo) {
+func URLReport(urlinfo *UrlInfo, config Config) {
   hc := http.Client{}
-  req, err := http.NewRequest("GET", url_report, nil)
+  req, err := http.NewRequest("GET", config.UrlReport, nil)
 
   form := req.URL.Query()
-  form.Add("apikey", APIKEY)
+  form.Add("apikey", config.Apikey)
   form.Add("resource", urlinfo.ScanInfoRequest.Resource)
   req.URL.RawQuery = form.Encode()
 
